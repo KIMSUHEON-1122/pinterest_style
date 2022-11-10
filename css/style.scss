@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&display=swap');
+ 
+$large : "(max-width : 1599px)"; //1600보다 작은 크기
+$large-semi : "(max-width:1199px)"; //1200보다 작은 크기
+$medium : "(max-width:899px)";
+$smaill : "(max-width:767px)";
+$mobile : "(max-width:539px)";
+$gradient : linear-gradient(45deg, #6ec4db, #076392);
+
+@mixin space(){
+    display: block;
+    content: "";
+}
+
+ul::after, section::after{
+    @include space();
+    clear: both;
+}
+body{
+    font: {
+        family : Arial, Helvetica, sans-serif;
+        size: 10px;
+    }
+}
+header{
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    background-image : linear-gradient(45deg, #6ec4db, #076392);
+
+    h1{
+        position: absolute;
+        top: 50%;
+        left: 50px;
+        transform: translateY(-120%);
+        color : rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.02em;
+        font : {
+            family: 'Signika', sans-serif;
+            size: 6em;
+            weight: bold;
+        }
+        &::after{
+            @include space;
+            width: 80%;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        &::before{
+            position: absolute;
+            top: 110%;
+            @include space;
+            content: "ABOUT F.E WORLD!";
+            font-size: 0.5em;
+        }
+        @media #{$large} {//1600px 보다 작아졌을때
+            left: 30px;
+        }
+        @media #{$large-semi} {//1200px 보다 작아졌을때
+            transform: translateY(-30px);
+            font : {
+                size: 3em;
+            }
+            &::after{
+                width: 70px;
+        
+            }
+            &::before{
+                display: none;
+            }
+        }
+    }
+
+    .sns{
+        position: absolute;
+        bottom: 100px;
+        right: 7em;        
+        li{
+            float: left;
+            margin: 0 1em;
+            a{
+                color: #fff;
+                font-size: 1.3em;
+                i{
+                    font-size: 1em;
+                }
+            }   
+        }
+        
+    }
+
+    @media #{$large} {//1600px 보다 작아졌을때
+        width: 350px;
+    }
+
+    @media #{$large-semi} {//1200px 보다 작아졌을때
+        width: 100%;
+        position: relative;
+        height: 80px;
+    }
+}
+
+main{
+    margin-left: 400px;
+    padding: 20px;
+
+    @media #{$large} {//1600px 보다 작아졌을때
+        margin-left: 350px;
+    }
+
+    @media #{$large-semi} {//1600px 보다 작아졌을때
+        margin-left: 0px;
+        width: 100%;
+    }
+}
+
+nav{
+    margin-bottom: 10px;
+    .btn{
+
+    }
+    li{
+        width: 100px;
+        height: 25px;
+        margin-left: 20px;
+        float: right;
+        a{
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            font : {
+                family: 'Signika', sans-serif;
+                size: 1.5em;
+                weight: normal;
+            }
+            color: #999;
+            text-align: center;
+            line-height: 25px;
+            letter-spacing: 5px;
+            &:hover{
+                background: $gradient;
+                color: white;
+                box-shadow: 0 0 10px (0,255,255,0.5);
+            }
+        }
+        @media #{$mobile}{
+            width: 33.33%;
+            margin-left: 0;
+            text-align: center;
+            a{
+                width: 90%;
+            }
+        }
+
+        &.on a{
+            background: $gradient;
+            color: white;
+            box-shadow: 0 0 10px (0,255,255,0.5);
+        }
+    }
+    
+}
+
+article{
+    width: 20%;
+    float: left;
+    padding: 15px;
+    div{
+        box-shadow: 0 0 10px rgb(0 0 0 /20%);
+        padding: 15px;
+        border-radius: 5px;
+    }
+    img{
+        width: 100%;
+    }
+    h2{
+        font : {
+            family: 'Signika', sans-serif;
+            size: 2em;
+            weight: 400;
+        }
+        color: #444;
+    }
+    p{
+        font-size: 1.1em;
+        color: #666;
+    }
+    @media #{$large} {
+        width: 25%;
+    }
+    @media #{$medium} {
+        width: 33.33%;
+    }
+    @media #{$smaill} {
+        width: 50%;
+    }
+    @media #{$mobile} {
+        width: 100%;
+    }
+}
+
+#popup{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    div{
+        background-color: rgba(0, 0, 0, 0.404);
+        padding: 50px;
+        border-radius: 5px;
+        color: #fff;
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+    }
+}
+
+
+img{
+    width: auto;
+    height: auto;
+    max-width: 80vw;
+    max-height: 60vh;
+} 
+    h2{
+        font : {
+            family: 'Signika', sans-serif;
+            size: 2em;
+            weight: 400;
+        }
+        margin: 16px 0 5px;   
+    }
+    p{
+        font-size: 1.1em;
+        color: #666;
+    }
+
+main #popup.on{
+    display: flex;
+
+}
